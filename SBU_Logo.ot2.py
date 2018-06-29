@@ -1,9 +1,9 @@
 """
-@author Opentrons, Lukas Velikov (Stony Brook iGEM)
-@date April 27th, 2018; June 27th, 2018
+@author Opentrons, Lukas Velikov (Stony Brook iGEM), also Matty Mulls
+@date April 27th, 2018; June 27th, 2018; June 29th 2018
 @version modified from 1.3
 """
-from opentrons import labware, instruments
+from opentrons import robot, labware, instruments
 
 
 def run_custom_protocol(pipette_type: 'StringSelection...'='p300-Single',
@@ -13,6 +13,7 @@ def run_custom_protocol(pipette_type: 'StringSelection...'='p300-Single',
         pipette = instruments.P300_Single(
             mount='right',
             tip_racks=[tiprack])
+        pipette.max_volume=200 #set max volume to 200
     elif pipette_type == 'p50-Single':
         tiprack = labware.load('tiprack-200ul', '1')
         pipette = instruments.P50_Single(
@@ -45,4 +46,7 @@ def run_custom_protocol(pipette_type: 'StringSelection...'='p300-Single',
     pipette.distribute(50, dye3, output.wells(dye3_wells), new_tip='once')
 
 
-run_custom_protocol(**{'pipette_type': 'p300-Single', 'dye_labware_type': 'trough-12row'})
+run_custom_protocol(**{'pipette_type': 'p300-Single', 'dye_labware_type': 'tube-rack-2ml'})
+
+for c in robot.commands():
+    print (c)
