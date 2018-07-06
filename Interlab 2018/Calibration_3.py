@@ -32,6 +32,7 @@ def run_custom_protocol(pipette_type: 'StringSelection...'='p300-Single',
     
     
     # Step 1: Add 100 uL of  PBS into wells A2, B2, C2, D2... A12, B12, C12, D12
+    # NOTE: Our source of PBS is distributed across wells A1, A2, A3, and A4 in the source labware
     pipette.pick_up_tip()
     pbs_source_list = [source.wells('A1'), source.wells('A2'), source.wells('A3'), source.wells('A4')]
     pbs_src_index = 0
