@@ -1,6 +1,6 @@
 """
 @author Lukas Velikov (Stony Brook iGEM)
-@date June 28th, 2018
+@date July 6th, 2018
 @version 1.0
 """
 from opentrons import labware, instruments, robot
@@ -55,8 +55,11 @@ def run_custom_protocol(pipette_type: 'StringSelection...'='p300-Single',
     pipette.transfer(200, fluorescein_source, destination_range)
     
     
-    # Step 3: Transfer 100 ul of fluorescein stock solution from A1 into A2
+    # Step 3: Transfer 100 ul of fluorescein stock solution from A1 into A2, for A, B, C, D
     pipette.transfer(100, plate.wells('A1'), plate.wells('A2'))
+    pipette.transfer(100, plate.wells('B1'), plate.wells('B2'))
+    pipette.transfer(100, plate.wells('C1'), plate.wells('C2'))
+    pipette.transfer(100, plate.wells('D1'), plate.wells('D2'))
     
 
     # Step 4: Mixing A2 - A11 and A11 into waste, for rows A - D
@@ -72,8 +75,7 @@ def run_custom_protocol(pipette_type: 'StringSelection...'='p300-Single',
                 pipette.dispense(100, liquid_waste)
         pipette.drop_tip()
 
-        
-    
+    # Debug 
     for c in robot.commands():
         print(c)
 
