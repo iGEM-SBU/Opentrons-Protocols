@@ -26,7 +26,7 @@ def run_custom_protocol(pipette_type: 'StringSelection...'='p300-Single',
             mount='right',
             tip_racks=[tiprack])
 
-    source = labware.load(source_labware_type, '4')  # Labware for stuff we're sucking in
+    source = labware.load(source_labware_type, '4')  # Labware for stuff we're sucking in (tube-rack-80well)
     plate = labware.load('96-flat', '3')  # Labware for stuff we're spitting out
     liquid_waste = labware.load('trash-box', '9')  # Liquid waste box
     
